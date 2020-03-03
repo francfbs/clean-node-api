@@ -1,15 +1,17 @@
+import { HttpResponse, HttpRequest } from './../interfaces/http'
+
 export class SignUpController {
-  handle (httpRequest: any): any {
+  handle (httpRequest: HttpRequest): HttpResponse {
     if (!httpRequest.body.name) {
       return {
         statusCode: 400,
-        body: new Error('Missinf param: name')
+        body: new Error('Missing param: name')
       }
     }
     if (!httpRequest.body.email) {
       return {
         statusCode: 400,
-        body: new Error('Missinf param: email')
+        body: new Error('Missing param: email')
       }
     }
   }
