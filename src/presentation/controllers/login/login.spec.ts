@@ -1,7 +1,7 @@
 import { HttpRequest } from '../../interfaces'
 import { LoginController } from './login'
-/* import { badRequest } from '../../helpers/http-helper'
-import { MissingParamError, InvalidParamError } from '../../errors' */
+import { badRequest } from '../../helpers/http-helper'
+import { MissingParamError, InvalidParamError } from '../../errors'
 import { Validation, ok } from './interfaces/login-interfaces'
 
 interface SutType {
@@ -18,14 +18,14 @@ const makeValidation = (): Validation => {
   return new ValidationStub()
 }
 
-/* const makeSut = (): SutType => {
+const makeSut = (): SutType => {
   const validationStub = makeValidation()
   const sut = new LoginController(validationStub)
   return {
     sut,
     validationStub
   }
-} */
+}
 
 const makeFakeRequest = (): HttpRequest => ({
   body: { email: 'any_email@mail.com', password: 'any_password' }
