@@ -1,6 +1,7 @@
 import { HttpRequest } from '../../interfaces'
 import { LoginController } from './login'
-import { Validation, Authentication, unauthorized, serverError, ok } from './interfaces/login-interfaces'
+import { Validation, Authentication, unauthorized, serverError, ok, badRequest } from './interfaces/login-interfaces'
+import { MissingParamError } from '../../errors'
 
 interface SutType {
   sut: LoginController
@@ -69,5 +70,20 @@ describe('Login Controller', () => {
     const { sut } = makeSut()
     const httpResponse = await sut.handle(makeFakeRequest())
     expect(httpResponse).toEqual(ok({ accessToken: 'any_token' }))
+  })
+
+  test('Should call Validation with correct values', async () => {
+    const { sut, validationStub } = makeSut()
+    const addSpy = jest.spyOn(validationStub, 'validate')
+    const httpRequest = makeFakeRequest()
+    await sut.handle(httpRequest)
+    expect(addSpy).toHaveBeenCalledWith(httpRequest.body)
+  })
+
+  test('Should return 400 if Validation returns an error', async () => {
+    const { sut, validationStub } = makeSut()
+    jest.spyOn(validationStub, 'validate').mockReturnValueOnce(new MissingParamError('any_field'))
+    const httpResponse = await sut.handle(makeFakeRequest())
+    expect(httpResponse).toEqual(badRequest(new MissingParamError('any_field')))
   })
 })
