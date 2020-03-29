@@ -1,6 +1,6 @@
-import { SignUpController } from './signup'
+import { SignUpController } from './signup-controller'
 import { MissingParamError, ServerError } from '../../errors'
-import { AddAccountModel, AddAccount, AccountModel, HttpRequest, Validation } from '../signup/interfaces/signup-interfaces'
+import { AddAccountModel, AddAccount, AccountModel, HttpRequest, Validation } from './interfaces/signup-interfaces'
 import { ok, badRequest, serverError } from '../../helpers/http/http-helper'
 
 interface SutTypes {

@@ -1,5 +1,5 @@
 import { HttpRequest } from '../../interfaces'
-import { LoginController } from './login'
+import { LoginController } from './login-controller'
 import { Validation, Authentication, unauthorized, serverError, ok, badRequest, AuthenticationModel } from './interfaces/login-interfaces'
 import { MissingParamError } from '../../errors'
 
