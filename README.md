@@ -7,9 +7,9 @@ Api-Rest conceitual em Node+TypeScript.
   - Design Patterns
   
 ## Testes
-  -Unidade
-  -Integração
-  -Cobertura de testes (100%)
+  - Unidade
+  - Integração (mongo in memory)
+  - Cobertura de testes (100%)
 
 ## Dependencias
   - bcrypt
