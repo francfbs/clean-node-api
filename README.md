@@ -14,7 +14,6 @@ Api-Rest conceitual em Node+TypeScript.
 ## Dependencias
   - bcrypt
   - express
-  - fast-glob
   - jsonwebtoken
   - mongodb
   - validator
